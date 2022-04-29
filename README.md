@@ -1,5 +1,7 @@
 <h1 align="center">React Native Quick WebSQL</h1>
 
+![cover](https://repository-images.githubusercontent.com/486860084/27ea3b8e-30c4-4acb-9c2c-691b37d9e2a2)
+
 This library provides a [WebSQL](http://www.w3.org/TR/webdatabase/)-compatible API to store data in a react native app, by using a fast [JSI](https://formidable.com/blog/2019/jsi-jsc-part-2/) implementation of the SQLite driver [react-native-quick-sqlite](https://github.com/ospfranco/react-native-quick-sqlite).
 
 ## Installation
