@@ -5,10 +5,6 @@ import type {WebsqlDatabase, WebsqlDatabaseCallback} from './websql-database'
 
 const openDB = customOpenDatabase(SQLiteDatabase)
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b)
-}
-
 class SQLitePlugin {
   openDatabase(
     args: {
