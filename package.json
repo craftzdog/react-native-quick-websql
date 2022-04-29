@@ -1,7 +1,7 @@
 {
   "name": "react-native-quick-websql",
   "version": "0.1.0",
-  "description": "Fast WebSQL-compatible engine for React Native",
+  "description": "Fast WebSQL-compatible SQLite driver for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -31,7 +31,11 @@
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
   },
-  "keywords": ["react-native", "ios", "android"],
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
   "repository": "https://github.com/craftzdog/react-native-quick-websql",
   "author": "Takuya Matsuyama <hi@craftz.dog> (https://github.com/craftzdog)",
   "license": "MIT",
@@ -65,7 +69,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-quick-sqlite": "^3.0.4"
   },
   "jest": {
     "preset": "react-native",
@@ -75,7 +80,9 @@
     ]
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "release-it": {
     "git": {
@@ -96,7 +103,10 @@
   },
   "eslintConfig": {
     "root": true,
-    "extends": ["@react-native-community", "prettier"],
+    "extends": [
+      "@react-native-community",
+      "prettier"
+    ],
     "rules": {
       "prettier/prettier": [
         "error",
@@ -110,7 +120,10 @@
       ]
     }
   },
-  "eslintIgnore": ["node_modules/", "lib/"],
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
   "prettier": {
     "quoteProps": "consistent",
     "singleQuote": true,
@@ -131,5 +144,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "websql": "^2.0.3"
   }
 }
