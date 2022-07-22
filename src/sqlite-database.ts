@@ -15,6 +15,28 @@ interface SQLQuery {
   args: any[]
 }
 
+function escapeBlob(data: any) {
+  if (typeof data === 'string') {
+    return data
+      .replace(/\u0002/g, '\u0002\u0002')
+      .replace(/\u0001/g, '\u0001\u0002')
+      .replace(/\u0000/g, '\u0001\u0001')
+  } else {
+    return data
+  }
+}
+
+function unescapeBlob(data: any) {
+  if (typeof data === 'string') {
+    return data
+      .replace(/\u0001\u0001/g, '\u0000')
+      .replace(/\u0001\u0002/g, '\u0001')
+      .replace(/\u0002\u0002/g, '\u0002')
+  } else {
+    return data
+  }
+}
+
 class SQLiteDatabase {
   _name: string
 
@@ -31,9 +53,15 @@ class SQLiteDatabase {
     try {
       const results: SQLResultSet[] = []
       for (const {sql, args} of queries) {
-        const response = sqlite.executeSql(this._name, sql, args)
+        const escapedArgs = args.map(escapeBlob)
+        const response = sqlite.executeSql(this._name, sql, escapedArgs)
         const rows: SQLResultSetRowList = Object.assign(
-          [...(response.rows?._array || [])],
+          [...(response.rows?._array || [])].map((row) =>
+            Object.keys(row).reduce(function (result: any, key: any) {
+              result[key] = unescapeBlob(row[key])
+              return result
+            }, {})
+          ),
           {
             item(this: SQLResultSetRowList, idx: number) {
               this[idx]
