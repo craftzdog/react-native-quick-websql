@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useState, useEffect, useCallback} from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import {
   StyleSheet,
   Text,
@@ -14,6 +14,7 @@ import WebSQLite, {
   SQLResultSet,
   SQLError,
 } from 'react-native-quick-websql'
+import { QuickSQLite } from 'react-native-quick-sqlite'
 
 function databaseName(baseName: string) {
   return baseName + '.' + Math.floor(Math.random() * 100000)
@@ -31,13 +32,13 @@ export default function App() {
     console.log(msg)
     setProgress((prev) => [
       ...prev,
-      {msg, key: Math.floor(Math.random() * 100000).toString()},
+      { msg, key: Math.floor(Math.random() * 100000).toString() },
     ])
   }, [])
 
   useEffect(() => {
     addLog(
-      typeof sqlite === 'object'
+      typeof QuickSQLite === 'object'
         ? 'quick-sqlite module loaded successfully'
         : 'Error: quick-sqlite module is not loaded'
     )
@@ -108,7 +109,7 @@ export default function App() {
 
     tx.executeSql(
       'CREATE TABLE IF NOT EXISTS Version( ' +
-        'version_id INTEGER PRIMARY KEY NOT NULL); ',
+      'version_id INTEGER PRIMARY KEY NOT NULL); ',
       [],
       successCB,
       errorStatementCB
@@ -116,8 +117,8 @@ export default function App() {
 
     tx.executeSql(
       'CREATE TABLE IF NOT EXISTS Departments( ' +
-        'department_id INTEGER PRIMARY KEY NOT NULL, ' +
-        'name VARCHAR(30) ); ',
+      'department_id INTEGER PRIMARY KEY NOT NULL, ' +
+      'name VARCHAR(30) ); ',
       [],
       successCB,
       errorStatementCB
@@ -125,10 +126,10 @@ export default function App() {
 
     tx.executeSql(
       'CREATE TABLE IF NOT EXISTS Offices( ' +
-        'office_id INTEGER PRIMARY KEY NOT NULL, ' +
-        'name VARCHAR(20), ' +
-        'longtitude FLOAT, ' +
-        'latitude FLOAT ) ; ',
+      'office_id INTEGER PRIMARY KEY NOT NULL, ' +
+      'name VARCHAR(20), ' +
+      'longtitude FLOAT, ' +
+      'latitude FLOAT ) ; ',
       [],
       successCB,
       errorStatementCB
@@ -136,12 +137,12 @@ export default function App() {
 
     tx.executeSql(
       'CREATE TABLE IF NOT EXISTS Employees( ' +
-        'employe_id INTEGER PRIMARY KEY NOT NULL, ' +
-        'name VARCHAR(55), ' +
-        'office INTEGER, ' +
-        'department INTEGER, ' +
-        'FOREIGN KEY ( office ) REFERENCES Offices ( office_id ) ' +
-        'FOREIGN KEY ( department ) REFERENCES Departments ( department_id ));',
+      'employe_id INTEGER PRIMARY KEY NOT NULL, ' +
+      'name VARCHAR(55), ' +
+      'office INTEGER, ' +
+      'department INTEGER, ' +
+      'FOREIGN KEY ( office ) REFERENCES Offices ( office_id ) ' +
+      'FOREIGN KEY ( department ) REFERENCES Departments ( department_id ));',
       []
     )
 
@@ -288,7 +289,7 @@ export default function App() {
   const assigningPragma = (db: WebsqlDatabase) => {
     return new Promise<void>((resolve) => {
       let sql = 'PRAGMA journal_mode = WAL'
-      db._db.exec([{sql: sql, args: []}], false, (_, result) => {
+      db._db.exec([{ sql: sql, args: [] }], false, (_, result) => {
         const row = result?.[0]?.rows?.[0]
         let journal_mode = row?.journal_mode
         if (journal_mode == 'wal') {
@@ -305,7 +306,7 @@ export default function App() {
   const queryingPragma = (db: WebsqlDatabase, isWal: boolean) => {
     return new Promise<void>((resolve) => {
       let sql = 'PRAGMA journal_mode'
-      db._db.exec([{sql: sql, args: []}], false, (_, result) => {
+      db._db.exec([{ sql: sql, args: [] }], false, (_, result) => {
         const row = result?.[0]?.rows?.[0]
         const journal_mode = row?.journal_mode
         // Default journal_modes differ on Android & iOS
@@ -343,7 +344,7 @@ export default function App() {
   const assigningParenthesisPragma = (db: WebsqlDatabase) => {
     return new Promise<void>((resolve) => {
       let sql = 'PRAGMA main.wal_checkpoint(FULL)'
-      db._db.exec([{sql: sql, args: []}], false, (_, result) => {
+      db._db.exec([{ sql: sql, args: [] }], false, (_, result) => {
         const row = result?.[0]?.rows?.[0]
         if (row.busy == 0 && row.checkpointed != -1 && row.log != -1) {
           addLog('✅ ' + sql)
@@ -362,8 +363,8 @@ export default function App() {
     await pragmaTests()
   }, [])
 
-  const renderProgressEntry = useCallback((entry: {item: LogEntry}) => {
-    const {item} = entry
+  const renderProgressEntry = useCallback((entry: { item: LogEntry }) => {
+    const { item } = entry
     return (
       <View style={listStyles.li}>
         <View>

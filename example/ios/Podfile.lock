@@ -272,7 +272,7 @@ PODS:
   - React-jsinspector (0.67.1)
   - React-logger (0.67.1):
     - glog
-  - react-native-quick-sqlite (3.0.4):
+  - react-native-quick-sqlite (4.0.1):
     - React
     - React-callinvoker
     - React-Core
@@ -514,7 +514,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 1af5de75a4c834c05d53a77c1512e5aa6c18412f
   React-jsinspector: ab80bcdb02f28cdfc0dbbaea6db1241565d59002
   React-logger: b08f354e4c928ff794ca477347fea0922aaf11c3
-  react-native-quick-sqlite: 6e2ccab68e66b0a09f1ce5b7eeae097d32230ec5
+  react-native-quick-sqlite: b7d1c75bf39331584168c6b76ff3d7ab00ad567c
   React-perflogger: 9a6172711d9c4c8c7ac0a426717317c3c6ecf85c
   React-RCTActionSheet: ed408b54b08278e6af8a75e08679675041da61ae
   React-RCTAnimation: 0163b497a423a9576a776685c6e3fe276f934758

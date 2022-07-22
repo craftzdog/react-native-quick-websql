@@ -1,5 +1,5 @@
-import 'react-native-quick-sqlite'
-import type {SQLResultSet, SQLResultSetRowList} from './websql-database'
+import { QuickSQLite } from 'react-native-quick-sqlite'
+import type { SQLResultSet, SQLResultSetRowList } from './websql-database'
 
 function massageError(err: string | Error) {
   return typeof err === 'string' ? new Error(err) : err
@@ -20,7 +20,7 @@ class SQLiteDatabase {
 
   constructor(name: string) {
     this._name = name
-    sqlite.open(name)
+    QuickSQLite.open(name)
   }
 
   exec(
@@ -30,8 +30,8 @@ class SQLiteDatabase {
   ) {
     try {
       const results: SQLResultSet[] = []
-      for (const {sql, args} of queries) {
-        const response = sqlite.executeSql(this._name, sql, args)
+      for (const { sql, args } of queries) {
+        const response = QuickSQLite.executeSql(this._name, sql, args)
         const rows: SQLResultSetRowList = Object.assign(
           [...(response.rows?._array || [])],
           {
