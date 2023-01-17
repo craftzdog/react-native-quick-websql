@@ -1,6 +1,6 @@
 {
   "name": "react-native-quick-websql",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Fast WebSQL-compatible SQLite driver for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
