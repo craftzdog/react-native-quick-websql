@@ -3379,10 +3379,10 @@ react-native-codegen@^0.0.8:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-quick-sqlite@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-quick-sqlite/-/react-native-quick-sqlite-4.0.1.tgz#53431ec6706c93c5efbf4a5e8052290f28a79cca"
-  integrity sha512-xLrUBdWlDUVDGK9mOZYsMThxzBVZ7C2NlDziJ5GQFkmxqiKQF0w4QkNRq/a5TojX0HVS+s2UvyI2LYJg8SpJpg==
+react-native-quick-sqlite@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-quick-sqlite/-/react-native-quick-sqlite-6.1.1.tgz#ba35d0a4a919a5a0962306c3fee4dc46983b0839"
+  integrity sha512-bVV7+mWAhWH/0iPjQmDlLHqTIkYm+j+k5pFiy+3jW91DnkH44C0tR4DSeRa6ERLz1fG/lDB1KwcBU3fOL9vFCA==
 
 react-native@0.67.1:
   version "0.67.1"
